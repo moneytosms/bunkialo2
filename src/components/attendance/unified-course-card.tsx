@@ -334,7 +334,7 @@ export function UnifiedCourseCard({
   const currentBuffer = stats?.bufferTo80Now;
   const showingFullSemMetric = !hasCurrentBuffer || showFullSemMetric;
   const currentMetricDisplay =
-    hasCurrentBuffer && currentBuffer !== null
+    hasCurrentBuffer && typeof currentBuffer === "number"
       ? formatMetric(currentBuffer)
       : heuristicBunksLeft.toString();
   const heuristicMetricDisplay = heuristicBunksLeft.toString();
@@ -350,7 +350,7 @@ export function UnifiedCourseCard({
     : null;
   const currentMetricColor = !isConfigured
     ? theme.textSecondary
-    : hasCurrentBuffer && currentBuffer !== null
+    : hasCurrentBuffer && typeof currentBuffer === "number"
       ? getCurrentBufferColor(currentBuffer)
       : heuristicBunksLeft < 0
         ? Colors.status.danger

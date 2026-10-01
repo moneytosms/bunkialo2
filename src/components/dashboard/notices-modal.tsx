@@ -209,7 +209,8 @@ export function NoticesModal({ visible, onClose }: NoticesModalProps) {
                   {notice.ctaAction === "open-url" && notice.ctaUrl ? (
                     <Pressable
                       onPress={() => {
-                        void Linking.openURL(notice.ctaUrl);
+                        const { ctaUrl } = notice;
+                        if (ctaUrl) void Linking.openURL(ctaUrl);
                       }}
                       className="mt-3 items-center rounded-xl px-3 py-2.5"
                       style={{ backgroundColor: Colors.accent }}
